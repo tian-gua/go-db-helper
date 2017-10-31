@@ -53,7 +53,7 @@ you can pass a bussiness function into Tx function for starting a transaction
 
 Tx function recieve a bussiness function which return an error,if the bussiness function's value is not nil, transaction will be rolled back
 
-when you want to see the sql statement,you can call DebugOn function
+when you want to see the sql statement,you can call the **DebugOn** function to show the logs,if not,call the **DebugOff** function to hidden the logs
 
 	2017/10/31 15:12:53 SQL: SELECT * FROM tb_test WHERE name = ? AND age = ? AND sex IS NOT NULL
 	2017/10/31 15:12:53 args: [aa 18]
