@@ -34,7 +34,7 @@ you can add database records by calling the **Insert** function or by calling th
  	n, err = dh.UpdateByIdSelective(&TestDbHelper{Id: 1, Name: "rrr"})
 
 
-> note: the different bettwen Insert/UpdateById function and InsertSelective/UpdateByIdSelective function is that the 'Selective' function will ignore the zero field
+> note: the difference between Insert/UpdateById function and InsertSelective/UpdateByIdSelective function is that the 'Selective' function will ignore the zero field
 
 you can delete a specified record by calling the **DeleteById** function
 
@@ -44,14 +44,14 @@ you can search for datas by add conditions and calling the **Select** function
 
 	err = dh.WhereEqual("name", "melon").AndEqual("age", 18).AndIsNotNull("sex").Select(&ts)
 
-you can pass a bussiness function into Tx function for starting a transaction
+you can pass a business function into Tx function for starting a transaction
 
 	err := df.Tx(func() error{
 			_, err := UpdateById(&TestRegistry{Id: 1, Name: "melon", Age: 1, CreateTime: time.Now()})
 			panic(fmt.Errorf("test rollback"))
 		})
 
-Tx function recieve a bussiness function which return an error,if the bussiness function's value is not nil or panic an error inside, transaction will be rolled back
+Tx function receive a business function which return an error,if the business function's value is not nil or panic an error inside, transaction will be rolled back
 
 when you want to see the sql statement,you can call the **DebugOn** function to show logs,if not,call the **DebugOff** function to hide logs
 
