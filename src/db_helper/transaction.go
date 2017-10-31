@@ -30,7 +30,7 @@ func (tm *txManager) set(tx *sql.Tx) {
 
 var tm *txManager
 
-func transaction(f func()) error {
+func transaction(f func() error) error {
 	db, err := getDB()
 	if err != nil {
 		return err
@@ -66,7 +66,10 @@ func transaction(f func()) error {
 	}()
 
 	//* 执行用户指定的业务
-	f()
+	err = f()
+	if err != nil {
+		panic(err)
+	}
 
 	//* 提交事务,如果有error就抛出
 	err = tx.Commit()

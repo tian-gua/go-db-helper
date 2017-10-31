@@ -21,13 +21,7 @@ func init() {
 		bs := []byte(s)
 		for i, v := range bs {
 			if i == 0 {
-				v += 32
-				columnName += string(v)
-				continue
-			}
-
-			if v == '_' {
-				columnName += "_"
+				columnName += string(v + 32)
 				continue
 			}
 

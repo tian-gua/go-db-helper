@@ -99,7 +99,7 @@ func TestCRUD(t *testing.T) {
 func TestTx(t *testing.T) {
 	TestConnect(t)
 	TestRegister(t)
-	err := Tx(func() {
+	err := Tx(func() error{
 		_, err := UpdateById(&TestRegistry{Id: 1, Name: "dads", Age: 232323, CreateTime: time.Now()})
 		if err != nil {
 			t.Fatal(err)

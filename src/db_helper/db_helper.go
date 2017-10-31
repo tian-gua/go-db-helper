@@ -18,7 +18,7 @@ func Register(table string, i interface{}) error {
 }
 
 //* 用户接口---执行事务
-func Tx(f func()) error {
+func Tx(f func() error) error {
 	return transaction(f)
 }
 
