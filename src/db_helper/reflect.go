@@ -41,19 +41,19 @@ func getTypeName(i interface{}) string {
 	return v.Type().Name()
 }
 
-//* 获取结构体指定字段
+//* 获取结构体指定字段,并且返回对应的interface{}
 func getValue(i interface{}, name string) interface{} {
 	v := reflect.Indirect(reflect.ValueOf(i))
 	return v.FieldByName(name).Interface()
 }
 
-//* 获取结构体指定字段的反射
+//* 获取结构体指定字段,并且返回对应的interface{}
 func getReflectValue(i interface{}, name string) interface{} {
 	v := reflect.Indirect(reflect.ValueOf(i))
 	return v.FieldByName(name).Interface()
 }
 
-//* 获取结构体的所有字段的字符串值
+//* 获取结构体的所有字段,并且返回对应的interface{}集合
 func getValues(i interface{}, st *StructType, filter func(s string) bool) []interface{} {
 	var is []interface{}
 	value := reflect.Indirect(reflect.ValueOf(i))
