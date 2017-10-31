@@ -55,16 +55,16 @@ Tx function receive a business function which return an error,if the business fu
 
 when you want to see the sql statement,you can call the **DebugOn** function to show logs,if not,call the **DebugOff** function to hide logs
 
-	2017/10/31 15:12:53 SQL: SELECT * FROM tb_test WHERE name = ? AND age = ? AND sex IS NOT NULL
-	2017/10/31 15:12:53 args: [aa 18]
+	2017/10/30 15:12:53 SQL: SELECT * FROM tb_test WHERE name = ? AND age = ? AND sex IS NOT NULL
+	2017/10/30 15:12:53 args: [aa 18]
 
 ## custom settings
 
-if you want to change the timeout,you can call the SetTimeout function
+if you want to change the default timeout,you can call the SetTimeout function
 
 **SetTimeout(timeout time.Duration)**
 
-if you implemented the Connetion interface by yourself,you can call the SetConnection function to change the framework internal Connection implementation
+if you implemented the Connection interface by yourself,you can call the SetConnection function to change the framework internal Connection implementation
 
 **func SetConnection(c Connection)**
 
