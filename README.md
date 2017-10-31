@@ -53,7 +53,7 @@ you can pass a bussiness function into Tx function for starting a transaction
 
 Tx function recieve a bussiness function which return an error,if the bussiness function's value is not nil or panic an error inside, transaction will be rolled back
 
-when you want to see the sql statement,you can call the **DebugOn** function to show the logs,if not,call the **DebugOff** function to hide the logs
+when you want to see the sql statement,you can call the **DebugOn** function to show logs,if not,call the **DebugOff** function to hide logs
 
 	2017/10/31 15:12:53 SQL: SELECT * FROM tb_test WHERE name = ? AND age = ? AND sex IS NOT NULL
 	2017/10/31 15:12:53 args: [aa 18]
@@ -64,7 +64,7 @@ if you want to change the timeout,you can call the SetTimeout function
 
 **SetTimeout(timeout time.Duration)**
 
-if you implemented the Connetion interface by yourself,you can call SetConnection function to change the framework internal Connection
+if you implemented the Connetion interface by yourself,you can call the SetConnection function to change the framework internal Connection implementation
 
 **func SetConnection(c Connection)**
 
