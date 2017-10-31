@@ -51,7 +51,7 @@ you can pass a bussiness function into Tx function for starting a transaction
 			panic(fmt.Errorf("test rollback"))
 		})
 
-Tx function recieve a bussiness function which return an error,if the bussiness function's value is not nil, transaction will be rolled back
+Tx function recieve a bussiness function which return an error,if the bussiness function's value is not nil or panic an error inside, transaction will be rolled back
 
 when you want to see the sql statement,you can call the **DebugOn** function to show the logs,if not,call the **DebugOff** function to hide the logs
 
