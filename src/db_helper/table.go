@@ -22,10 +22,10 @@ func getTable(tableName string, i interface{}) *tableInfo {
 	columnsMap := make(map[string]*columnInfo)
 	col2filedMap := make(map[string]string)
 	for _, v := range (*st).fields {
-		ci := &columnInfo{name: columnName2fieldName(v.Name), typeName: columnTypeParser(v)}
+		ci := &columnInfo{name: fieldName2columnName(v.Name), typeName: columnTypeParser(v)}
 		columnsMap[v.Name] = ci
 		columnNames = append(columnNames, ci.name)
-		col2filedMap[columnName2fieldName(v.Name)] = v.Name
+		col2filedMap[fieldName2columnName(v.Name)] = v.Name
 	}
 	return &tableInfo{tableName: tableName, columns: columnsMap, columnNames: columnNames, col2filedMap: col2filedMap}
 }

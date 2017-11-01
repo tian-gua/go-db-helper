@@ -96,6 +96,11 @@ func UpdateById(i interface{}) (int64, error) {
 	return update(s, args)
 }
 
+//* 用户接口---执行自定义更新操作
+func Update(s string, args ...interface{}) (int64, error) {
+	return update(s, args)
+}
+
 //* 用户接口---根据id执行删除操作
 func DeleteById(i interface{}) (int64, error) {
 	s, args, err := generateDeleteByIdSql(i)

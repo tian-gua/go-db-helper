@@ -99,7 +99,7 @@ func TestCRUD(t *testing.T) {
 func TestTx(t *testing.T) {
 	TestConnect(t)
 	TestRegister(t)
-	err := Tx(func() error{
+	err := Tx(func() error {
 		_, err := UpdateById(&TestRegistry{Id: 1, Name: "dads", Age: 232323, CreateTime: time.Now()})
 		if err != nil {
 			t.Fatal(err)
@@ -140,5 +140,15 @@ func TestSelectStruct(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Log(ts)
+}
 
+func TestUpdate(t *testing.T) {
+	TestConnect(t)
+	TestRegister(t)
+
+	n, err := Update("update tb_test set name = ? where id = ?", "melo111111n", 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(n)
 }
