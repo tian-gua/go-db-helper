@@ -2,7 +2,7 @@
 an lightweight orm framework
 
 
-## install
+## Install
 > go get -u github.com/aidonggua/go-db-helper
 
 ## Getting Started
@@ -58,7 +58,7 @@ when you want to see the sql statement,you can call the **DebugOn** function to 
 	2017/10/30 15:12:53 SQL: SELECT * FROM tb_test WHERE name = ? AND age = ? AND sex IS NOT NULL
 	2017/10/30 15:12:53 args: [aa 18]
 
-## custom settings
+## Custom settings
 
 if you want to change the default timeout,you can call the SetTimeout function
 
@@ -69,7 +69,7 @@ if you implemented the Connection interface by yourself,you can call the SetConn
 **func SetConnection(c Connection)**
 
 
-## author
+## Author
 **melon**
 
 - e.yehaoo@gmail.com
