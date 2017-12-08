@@ -20,6 +20,7 @@ type TestRegistry struct {
 	Age        int
 	Sex        int
 	CreateTime time.Time
+	TestBlob   []byte
 }
 
 func TestRegister(t *testing.T) {
@@ -151,4 +152,20 @@ func TestUpdate(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Log(n)
+}
+
+func TestBlobType(t *testing.T) {
+	TestConnect(t)
+	TestRegister(t)
+
+	ts := []TestRegistry{}
+	WhereEqual("id",1).Select(&ts)
+	t.Log(ts)
+
+	test := ts[0]
+	test.TestBlob = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
+	_,err := UpdateById(test)
+	if err != nil {
+		panic(err)
+	}
 }

@@ -91,13 +91,19 @@ func getValid(i interface{}, st *StructType, filter func(s string) bool) ([]stri
 
 //* 判断值是否为零值
 func isZero(v reflect.Value) bool {
+	if v.Type().Kind() == reflect.Slice {
+		if v.IsNil() {
+			return true
+		}
+		return false
+	}
 	if v.IsValid() && !(reflect.Zero(v.Type()).Interface() == v.Interface()) {
 		return false
 	}
 	return true
 }
 
-func getStructFieldInterfaces(cols []string, r *registryInfo) (reflect.Value, []interface{}) {
+func getStructFieldValueInterfaces(cols []string, r *registryInfo) (reflect.Value, []interface{}) {
 	var filedInterfaces []interface{}
 	value := reflect.Indirect(reflect.ValueOf(r.i))
 	newValue := reflect.New(value.Type())
@@ -110,7 +116,7 @@ func getStructFieldInterfaces(cols []string, r *registryInfo) (reflect.Value, []
 	return newValue, filedInterfaces
 }
 
-func getStructFieldInterfaces_(cols []string, sprv reflect.Value) []interface{} {
+func getStructFieldInterfaces(cols []string, sprv reflect.Value) []interface{} {
 	var fis []interface{}
 	for _, v := range cols {
 		fis = append(fis, sprv.Elem().FieldByName(columnName2fieldName(v)).Addr().Interface())

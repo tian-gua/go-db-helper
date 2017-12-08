@@ -49,7 +49,7 @@ func query(is interface{}, s string, args []interface{}) error {
 
 	ssrv := reflect.ValueOf(is).Elem()
 	for rows.Next() {
-		newsprv, values := getStructFieldInterfaces(cols, r)
+		newsprv, values := getStructFieldValueInterfaces(cols, r)
 		err = rows.Scan(values...)
 		if err != nil {
 			return err
@@ -151,7 +151,7 @@ func queryStructs(s string, ssp interface{}) error {
 	ssrv := reflect.ValueOf(ssp).Elem()
 	newsp := reflect.New(ssrv.Type().Elem())
 	for rows.Next() {
-		err = rows.Scan(getStructFieldInterfaces_(cols,newsp)...)
+		err = rows.Scan(getStructFieldInterfaces(cols,newsp)...)
 		if err != nil {
 			return err
 		}
