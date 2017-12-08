@@ -40,7 +40,11 @@ func init() {
 		previous := ""
 		for i, v := range bs {
 			if i == 0 {
-				fieldName += string(v - 32)
+				if v >= 'A' && v <= 'Z' {
+					fieldName += string(v)
+				}else {
+					fieldName += string(v - 32)
+				}
 				continue
 			}
 
@@ -50,7 +54,11 @@ func init() {
 			}
 
 			if previous == "_" {
-				fieldName += string(v - 32)
+				if v >= 'A' && v <= 'Z' {
+					fieldName += string(v)
+				}else {
+					fieldName += string(v - 32)
+				}
 				previous += string(v)
 				continue
 			}
